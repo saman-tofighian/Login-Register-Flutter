@@ -165,6 +165,7 @@ class LoginPage extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(8.0), // تنظیم شعاع گردی برای حاشیه
           ),
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -174,7 +175,7 @@ class LoginPage extends StatelessWidget {
                 child: const Align(
                   alignment: Alignment.centerRight, // قرار دادن متن به سمت راست
                   child: Text(
-                    'ورود',
+                    'خوش آمدید',
                     style: TextStyle(
                       fontSize: 24.0, // تنظیم سایز متن
                       fontWeight: FontWeight.bold, // تنظیم وزن متن
@@ -201,7 +202,20 @@ class LoginPage extends StatelessWidget {
                 ),
                 obscureText: true,
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 24.0),
+              TextButton(
+                onPressed: () {
+                  //
+                },
+                child: const Text(
+                  'رمز عبور خود را فراموش کردهاید؟ فراموشی رمز عبور',
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(height: 30.0),
               SizedBox(
                 width: 352.0,
                 height: 56,
