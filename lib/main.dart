@@ -24,6 +24,7 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  final TextEditingController _fullNameController = TextEditingController();
   bool acceptTerms = false;
 
   @override
@@ -58,6 +59,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
               ),
               TextFormField(
+                controller: _fullNameController,
                 autofocus: true,
                 textAlign: TextAlign.right,
                 decoration: const InputDecoration(
@@ -109,6 +111,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   onPressed: acceptTerms
                       ? () {
                           // Add registration logic here
+                          _showRegistrationSuccessDialog(context);
                         }
                       : null, // غیرفعال کردن دکمه در صورت عدم تایید قوانین و شرایط
                   style: ElevatedButton.styleFrom(
@@ -148,6 +151,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
       ),
     );
   }
+
+  void _showRegistrationSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Icon(Icons.check_circle, color: Colors.green, size: 48.0),
+          content: Text(
+              '${_fullNameController.text} عزیز ثبت نام شما با موفقیت انجام شد'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('باشه'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 class LoginPage extends StatelessWidget {
@@ -158,6 +182,7 @@ class LoginPage extends StatelessWidget {
         child: Container(
           width: 540.0, // تنظیم عرض فرم
           height: 551.0, // تنظیم ارتفاع فرم
+
           padding: const EdgeInsets.all(50.0),
           decoration: BoxDecoration(
             border: Border.all(
